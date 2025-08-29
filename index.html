@@ -96,9 +96,8 @@
       </div>
     </div>
 
-    <!-- Optional: Add some interactive hover effects -->
     <script>
-      // Add subtle hover effects
+    
       document.querySelector("h1").addEventListener("mouseenter", function () {
         this.style.transform = "translateY(-2px)";
         this.style.transition = "transform 0.3s ease";
@@ -218,9 +217,9 @@
         <div class="flex flex-col md:flex-row items-center max-w-6xl mx-auto">
           <!-- Image Section -->
           <div class="w-full md:w-2/5 flex justify-center">
-            <!-- The negative margin helps the image appear as if it's sitting on the edge of the design -->
+           
             <img
-              src="images/JPG/4.png"
+              src="images/4.png"
               alt="A smiling woman in traditional Indian dance attire, seated."
               class="w-full max-w-sm md:max-w-md h-auto object-cover -my-16 md:-my-24"
             />
@@ -514,25 +513,7 @@
         <div class="relative max-w-6xl mx-auto">
           <!-- Main Carousel Container -->
           <div class="relative overflow-hidden rounded-2xl">
-            <div id="imageCarousel" class="carousel-track">
-              <!-- Clones of last two for seamless prev looping -->
-              <img src="images/JPG/scroll-image7.jpeg" alt="Award Presentation" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="-2" draggable="false">
-              <img src="images/JPG/scroll-image8.jpeg" alt="Leadership Recognition" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="-1" draggable="false">
-
-              <!-- Real images (0..7) -->
-              <img src="images/JPG/scroll-image1.png" alt="Award Ceremony" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="0" draggable="false">
-              <img src="images/JPG/scroll-image2.png" alt="Leadership Event" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="1" draggable="false">
-              <img src="images/JPG/scroll-image3.png" alt="Cyber Security Award" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="2" draggable="false">
-              <img src="images/JPG/scroll-image4.jpeg" alt="Women in Tech" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="3" draggable="false">
-              <img src="images/JPG/scroll-image5.jpeg" alt="Professional Achievement" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="4" draggable="false">
-              <img src="images/JPG/scroll-image6.jpeg" alt="Industry Recognition" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="5" draggable="false">
-              <img src="images/JPG/scroll-image7.jpeg" alt="Award Presentation" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="6" draggable="false">
-              <img src="images/JPG/scroll-image8.jpeg" alt="Leadership Recognition" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="7" draggable="false">
-
-              <!-- Clones of first two for seamless next looping -->
-              <img src="images/JPG/scroll-image1.png" alt="Award Ceremony" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="8" draggable="false">
-              <img src="images/JPG/scroll-image2.png" alt="Leadership Event" class="carousel-image w-80 h-96 object-cover rounded-lg" data-index="9" draggable="false">
-            </div>
+            <div id="imageCarousel" class="carousel-track"></div>
 
             <!-- Navigation Arrows -->
             <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-500/60 hover:bg-gray-500/80 text-white p-3 rounded-full transition-all duration-300 z-10">
@@ -548,20 +529,8 @@
           </div>
 
           <!-- Dots Indicator -->
-          <div class="flex justify-center mt-6 space-x-2">
-            <button class="dot-indicator w-3 h-3 bg-gray-400 rounded-full transition-all duration-300" data-index="0"></button>
-            <button class="dot-indicator w-3 h-3 bg-gray-400 rounded-full transition-all duration-300" data-index="1"></button>
-            <button class="dot-indicator w-3 h-3 bg-gray-400 rounded-full transition-all duration-300" data-index="2"></button>
-            <button class="dot-indicator w-3 h-3 bg-gray-400 rounded-full transition-all duration-300" data-index="3"></button>
-            <button class="dot-indicator w-3 h-3 bg-gray-400 rounded-full transition-all duration-300" data-index="4"></button>
-            <button class="dot-indicator w-3 h-3 bg-gray-400 rounded-full transition-all duration-300" data-index="5"></button>
-            <button class="dot-indicator w-3 h-3 bg-gray-400 rounded-full transition-all duration-300" data-index="6"></button>
-            <button class="dot-indicator w-3 h-3 bg-gray-400 rounded-full transition-all duration-300" data-index="7"></button>
-          </div>
-        </div>
-        <!-- See more button -->
-        <div class="mt-8 flex justify-center">
-          <a href="./gallery.html" class="inline-block bg-[#144f6d] text-white font-semibold py-3 px-8 rounded-lg hover:opacity-90 transition-colors duration-300 shadow-md">See more</a>
+          <div class="flex justify-center mt-6 space-x-2" id="dotsContainer"></div>
+
         </div>
       </div>
     </section>
@@ -638,7 +607,7 @@
         A unit of Avanzo Cyber Security Solutions | Avanzo Designs
       </footer>
 
-      <!-- Custom Scrollbar -->
+      <!-- Scrollbar -->
       <div
         class="absolute right-2.5 top-1/2 -translate-y-1/2 h-52 w-1.5 bg-gray-200 rounded-full z-30"
       >
@@ -653,125 +622,152 @@
         const carousel = document.getElementById('imageCarousel');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const dots = document.querySelectorAll('.dot-indicator');
-        const images = document.querySelectorAll('.carousel-image');
-        
-        // We have 2 clones at the start and 2 at the end
-        let currentIndex = 2; // start at first real slide
-        const totalImages = 8;
-        
-        function updateCarousel() {
-          
-          const imageWidth = 320;
-          const margin = 20; 
-          const containerWidth = window.innerWidth > 768 ? 768 : window.innerWidth - 48; 
-          const translateX = -(currentIndex * (imageWidth + margin)) + (containerWidth / 2) - (imageWidth / 2);
-          
-          carousel.style.transform = `translateX(${translateX}px)`;
-          
-          // Active state on visible slide (only real slides considered)
-          images.forEach((img, index) => {
-            img.classList.remove('active');
-            if (index === currentIndex) {
-              img.classList.add('active');
-            }
-          });
-          
-          // Update dots mapping currentIndex (2..9) -> (0..7)
-          dots.forEach((dot, index) => {
-            const realIndex = ((currentIndex - 2) % totalImages + totalImages) % totalImages;
-            if (index === realIndex) {
-              dot.classList.remove('bg-gray-400');
-              dot.classList.add('bg-gray-800');
-            } else {
-              dot.classList.remove('bg-gray-800');
-              dot.classList.add('bg-gray-400');
-            }
-          });
-          
+
+
+        const imagesData = [
+          'images/JPG/scroll-image1.png',
+          'images/JPG/scroll-image2.png',
+          'images/JPG/scroll-image3.png',
+          'images/JPG/scroll-image4.jpeg',
+          'images/JPG/scroll-image5.jpeg',
+          'images/JPG/scroll-image6.jpeg',
+          'images/JPG/scroll-image7.jpeg',
+          'images/JPG/scroll-image8.jpeg',
+          'images/JPG/1.jpg','images/JPG/2.jpg','images/JPG/4.jpg','images/JPG/5.jpg','images/JPG/6.jpg','images/JPG/7.jpg','images/JPG/8.jpg','images/JPG/9.jpg','images/JPG/10.jpg','images/JPG/11.jpg','images/JPG/12.jpg','images/JPG/13.jpg','images/JPG/14.jpg','images/JPG/15.jpg','images/JPG/17.jpg','images/JPG/18.jpg','images/JPG/19.jpg','images/JPG/20.jpg','images/JPG/21.jpg','images/JPG/22.jpg','images/JPG/23.jpg','images/JPG/24.jpg','images/JPG/25.jpg','images/JPG/26.jpg','images/JPG/27.jpg','images/JPG/28.jpg','images/JPG/29.jpg','images/JPG/30.jpg','images/JPG/31.jpg','images/JPG/32.jpg','images/JPG/33.jpg','images/JPG/34.jpg','images/JPG/35.jpg','images/JPG/36.jpg','images/JPG/37.jpg','images/JPG/38.jpg','images/JPG/39.jpg','images/JPG/40.jpg','images/JPG/41.jpg','images/JPG/42.jpg','images/JPG/43.jpg','images/JPG/44.jpg','images/JPG/45.jpg','images/JPG/46.jpg'
+        ];
+
+       
+        const slides = [];
+        const makeImg = (src) => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = 'Gallery image';
+          img.className = 'carousel-image w-80 h-96 object-cover rounded-lg';
+          img.draggable = false;
+          return img;
+        };
+
+        slides.push(makeImg(imagesData[imagesData.length - 2]));
+        slides.push(makeImg(imagesData[imagesData.length - 1]));
+       
+        imagesData.forEach(src => slides.push(makeImg(src)));
      
-          console.log('Current Index:', currentIndex, 'TranslateX:', translateX);
+        slides.push(makeImg(imagesData[0]));
+        slides.push(makeImg(imagesData[1]));
+
+        slides.forEach(img => carousel.appendChild(img));
+
+        const dotsContainer = document.getElementById('dotsContainer');
+        const dots = [];
+        if (dotsContainer) {
+          imagesData.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.className = 'w-2.5 h-2.5 bg-gray-400 rounded-full transition-all duration-300';
+            dot.dataset.index = String(idx);
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+          });
         }
-        
-        function nextSlide() {
-          currentIndex++;
-          if (currentIndex >= totalImages + 2) { // passed the last clone
-            setTimeout(() => {
-              carousel.style.transition = 'none';
-              currentIndex = 2; // jump back to first real
-              updateCarousel();
-              setTimeout(() => {
-                carousel.style.transition = 'transform 0.5s ease-in-out';
-              }, 10);
-            }, 500);
-          }
+
+        let currentIndex = 2;
+        const totalImages = imagesData.length;
+
+        function updateCarousel() {
+          const sample = carousel.querySelector('.carousel-image');
+          const sampleStyles = sample ? window.getComputedStyle(sample) : null;
+          const imageWidth = sample ? sample.clientWidth : 320; 
+          const marginLeft = sampleStyles ? parseFloat(sampleStyles.marginLeft) || 0 : 0;
+          const marginRight = sampleStyles ? parseFloat(sampleStyles.marginRight) || 0 : 0;
+          const margin = marginLeft + marginRight; 
+          const containerEl = carousel.parentElement; 
+          const containerWidth = containerEl ? containerEl.clientWidth : window.innerWidth;
+          const translateX = -(currentIndex * (imageWidth + margin)) + (containerWidth / 2) - (imageWidth / 2);
+          carousel.style.transform = `translateX(${translateX}px)`;
+
+          const allImgs = carousel.querySelectorAll('.carousel-image');
+          allImgs.forEach((img, index) => {
+            img.classList.remove('active');
+            if (index === currentIndex) img.classList.add('active');
+          });
+
           
+          if (dots.length) {
+            const realIndex = ((currentIndex - 2) % totalImages + totalImages) % totalImages;
+            dots.forEach((dot, i) => {
+              if (i === realIndex) {
+                dot.classList.remove('bg-gray-400');
+                dot.classList.add('bg-gray-800');
+              } else {
+                dot.classList.remove('bg-gray-800');
+                dot.classList.add('bg-gray-400');
+              }
+            });
+          }
+        }
+
+        function nextSlide() {
+      
+          if (currentIndex === totalImages + 1) {
+            carousel.style.transition = 'none';
+            currentIndex = 2;
+            updateCarousel();
+            setTimeout(() => { carousel.style.transition = 'transform 0.5s ease-in-out'; }, 10);
+            return;
+          }
+
+          currentIndex++;
           updateCarousel();
         }
-        
+
         function prevSlide() {
           currentIndex--;
-          if (currentIndex < 2) { // passed the first clone
+          if (currentIndex < 2) {
             setTimeout(() => {
               carousel.style.transition = 'none';
-              currentIndex = totalImages + 1; // jump to last real
+              currentIndex = totalImages + 1;
               updateCarousel();
-              setTimeout(() => {
-                carousel.style.transition = 'transform 0.5s ease-in-out';
-              }, 10);
+              setTimeout(() => { carousel.style.transition = 'transform 0.5s ease-in-out'; }, 10);
             }, 500);
           }
-          
           updateCarousel();
         }
-        
-        // Event listeners
+
         nextBtn.addEventListener('click', nextSlide);
         prevBtn.addEventListener('click', prevSlide);
-        
-        // Dot navigation
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            currentIndex = index + 2; // map dot to real index
-            console.log('Clicked dot:', index, 'Setting currentIndex to:', currentIndex);
-            updateCarousel();
+   
+        if (dots.length) {
+          dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+              currentIndex = index + 2;
+              updateCarousel();
+            });
           });
-        });
-        
-        // Auto-play 
+        }
+
         setInterval(nextSlide, 5000);
-        // Initialize without transition jump
         carousel.style.transition = 'none';
         updateCarousel();
-        setTimeout(() => {
-          carousel.style.transition = 'transform 0.5s ease-in-out';
-        }, 10);
+        setTimeout(() => { carousel.style.transition = 'transform 0.5s ease-in-out'; }, 10);
+        window.addEventListener('resize', updateCarousel);
       });
 
-
-
-      // Form submission
-      form.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    fetch(form.action, {
-        method: form.method,
-        body: new FormData(form)
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        if (data.success === true || data.status === "success") {
-            alert("Message sent successfully!");
-            form.reset();
-        } else {
-            alert("Something went wrong: " + data.message);
-        }
-    })
-    .catch(error => alert("Error: " + error));
-});
-
-
+      const form = document.querySelector('form[action="https://api.web3forms.com/submit"]');
+      if (form) {
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          fetch(form.action, { method: form.method, body: new FormData(form) })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success === true || data.status === "success") {
+                alert("Message sent successfully!");
+                form.reset();
+              } else {
+                alert("Something went wrong: " + data.message);
+              }
+            })
+            .catch(error => alert("Error: " + error));
+        });
+      }
     </script>
   </body>
 </html>
