@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Raleway", sans-serif;
+        overflow-x: hidden;
+      }
+      .font-sans {
+        font-family: "Inter", sans-serif;
+      }
+      .content-overlay {
+        position: relative;
+        z-index: 1;
+      }
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgba(100, 116, 139, 0.2);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .image-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .image-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .image-container {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+      }
+
+      .image-card:hover .image-container img {
+        transform: scale(1.05);
+      }
+
+      .image-info {
+        display: none;
+      }
+
+      .image-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 0.5rem;
+      }
+
+      .image-description {
+        color: #64748b;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .modal-content {
+        position: relative;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 95vw;
+        max-height: 95vh;
+      }
+
+      .modal img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: calc(100vh - 80px);
+        object-fit: contain;
+        border-radius: 8px;
+        display: block;
+      }
+
+      .close {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+      }
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 1rem;
+        }
+
+        .image-info {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    
+<!-- Back to Home Button -->
+    <div class="absolute top-8 left-4 sm:left-6 lg:left-8 z-10">
+        <a href="index.html" class="flex items-center text-gray-700 hover:text-medical-blue transition-colors duration-300 group">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mr-2 transform group-hover:-translate-x-1 transition-transform duration-300">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            <span class="text-sm font-medium">Back to Home</span>
+        </a>
+    </div>
+    
+
+    <div class="content-overlay">
+      <!-- Gallery Header -->
+      <main>
+        <div
+          class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16"
+        >
+          <div
+            class="text-center max-w-3xl mx-auto animate-on-scroll is-visible"
+          >
+            <h1
+              class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#144f6d] tracking-tight leading-tight"
+            >
+              Image Gallery
+            </h1>
+            <p class="mt-6 text-lg text-gray-600 font-sans">
+              Browse through our collection of images showcasing our work and
+              projects.
+            </p>
+            <div class="mt-8 flex items-center justify-center gap-4">
+              <div class="flex items-center space-x-2 text-gray-600">
+                <i class="fas fa-images text-xl"></i>
+                <span class="font-medium" id="image-count">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Gallery Section -->
+      <section class="bg-white py-8 sm:py-12 lg:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="gallery-grid" id="gallery-container"></div>
+
+     
+          <div class="mt-16 flex items-center justify-center">
+            <nav class="flex items-center space-x-2" aria-label="Pagination">
+      
+              <button
+                id="prevBtn"
+                class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <i class="fas fa-chevron-left mr-1"></i>
+                Previous
+              </button>
+
+              <div class="flex items-center space-x-1" id="pageNumbers">
+        
+              </div>
+
+              <button
+                id="nextBtn"
+                class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Next
+                <i class="fas fa-chevron-right ml-1"></i>
+              </button>
+            </nav>
+          </div>
+
+          <div class="mt-6 text-center text-sm text-gray-600">
+            <span id="pageInfo">Showing 1-12 of 46 images</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="w-full bg-gray-800 text-gray-400 text-sm py-4 text-center z-20"
+      >
+        A unit of Avanzo Cyber Security Solutions | Avanzo Designs
+      </footer>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <div class="modal-content">
+        <img id="modalImage" src="" alt="Full size image" />
+      </div>
+    </div>
+
+   
+    <script>
+
+      const images = [
+        {
+          src: "images/photos/1.jpg",
+          title: "Scroll Image 1",
+          description: "Highlight from accolades",
+        },
+        {
+          src: "images/photos/2.jpg",
+          title: "Scroll Image 2",
+          description: "Leadership event",
+        },
+        {
+          src: "images/photos/3.jpg",
+          title: "Scroll Image 3",
+          description: "Cyber security award",
+        },
+        {
+          src: "images/photos/4.jpg",
+          title: "Scroll Image 4",
+          description: "Women in tech",
+        },
+        {
+          src: "images/photos/5.jpg",
+          title: "Scroll Image 5",
+          description: "Professional achievement",
+        },
+        {
+          src: "images/photos/6.jpg",
+          title: "Scroll Image 6",
+          description: "Industry recognition",
+        },
+        {
+          src: "images/photos/7.jpg",
+          title: "Scroll Image 7",
+          description: "Award presentation",
+        },
+        {
+          src: "images/photos/8.jpg",
+          title: "Scroll Image 8",
+          description: "Leadership recognition",
+        },
+        {
+          src: "images/photos/9.jpg",
+          title: "Image 1",
+          description: "Professional cybersecurity visualization",
+        },
+        {
+          src: "images/photos/10.jpg",
+          title: "Image 2",
+          description: "Security infrastructure overview",
+        },
+        {
+          src: "images/photos/11.jpg",
+          title: "Image 4",
+          description: "Network security diagram",
+        },
+        {
+          src: "images/photos/12.jpg",
+          title: "Image 5",
+          description: "Data protection concept",
+        },
+        {
+          src: "images/photos/13.jpg",
+          title: "Image 6",
+          description: "Cybersecurity framework",
+        },
+        {
+          src: "images/photos/14.jpg",
+          title: "Image 7",
+          description: "Threat detection system",
+        },
+        {
+          src: "images/photos/15.jpg",
+          title: "Image 8",
+          description: "Security operations center",
+        },
+        {
+          src: "images/photos/16.jpg",
+          title: "Image 9",
+          description: "Digital security protocols",
+        },
+        {
+          src: "images/photos/17.jpg",
+          title: "Image 10",
+          description: "Advanced security solutions",
+        },
+        {
+          src: "images/photos/18.jpg",
+          title: "Image 11",
+          description: "Enterprise security platform",
+        },
+        {
+          src: "images/photos/19.jpg",
+          title: "Image 12",
+          description: "Cybersecurity architecture",
+        },
+        {
+          src: "images/photos/20.jpg",
+          title: "Image 13",
+          description: "Security monitoring dashboard",
+        },
+        {
+          src: "images/photos/21.jpg",
+          title: "Image 14",
+          description: "Threat intelligence system",
+        },
+        {
+          src: "images/photos/22.jpg",
+          title: "Image 15",
+          description: "Security compliance framework",
+        },
+        {
+          src: "images/photos/23.jpg",
+          title: "Image 17",
+          description: "Network protection system",
+        },
+        {
+          src: "images/photos/24.jpg",
+          title: "Image 18",
+          description: "Data security protocols",
+        },
+        {
+          src: "images/photos/25.jpg",
+          title: "Image 19",
+          description: "Cybersecurity best practices",
+        },
+        {
+          src: "images/photos/26.jpg",
+          title: "Image 20",
+          description: "Security infrastructure design",
+        },
+        {
+          src: "images/photos/27.jpg",
+          title: "Image 21",
+          description: "Advanced threat protection",
+        },
+        {
+          src: "images/photos/28.jpg",
+          title: "Image 22",
+          description: "Security operations workflow",
+        },
+        {
+          src: "images/photos/29.jpg",
+          title: "Image 23",
+          description: "Digital asset protection",
+        },
+        {
+          src: "images/photos/30.jpg",
+          title: "Image 24",
+          description: "Security monitoring tools",
+        },
+        {
+          src: "images/photos/31.jpg",
+          title: "Image 25",
+          description: "Cybersecurity framework",
+        },
+        {
+          src: "images/photos/32.jpg",
+          title: "Image 26",
+          description: "Security compliance system",
+        },
+        {
+          src: "images/photos/33.jpg",
+          title: "Image 27",
+          description: "Threat detection platform",
+        },
+        {
+          src: "images/photos/34.jpg",
+          title: "Image 28",
+          description: "Network security overview",
+        },
+        {
+          src: "images/photos/35.jpg",
+          title: "Image 29",
+          description: "Data protection strategy",
+        },
+        {
+          src: "images/photos/36.jpg",
+          title: "Image 30",
+          description: "Security infrastructure",
+        },
+        {
+          src: "images/photos/37.jpg",
+          title: "Image 31",
+          description: "Cybersecurity solutions",
+        },
+        {
+          src: "images/photos/38.jpg",
+          title: "Image 32",
+          description: "Security platform overview",
+        },
+        {
+          src: "images/photos/39.jpg",
+          title: "Image 33",
+          description: "Threat intelligence",
+        },
+        {
+          src: "images/photos/40.jpg",
+          title: "Image 34",
+          description: "Security operations",
+        },
+        {
+          src: "images/photos/41.jpg",
+          title: "Image 35",
+          description: "Digital security",
+        },
+        
+      ];
+
+   
+      const imagesPerPage = 12;
+      let currentPage = 1;
+
+      const galleryContainer = document.getElementById("gallery-container");
+      const imageCount = document.getElementById("image-count");
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const closeBtn = document.querySelector(".close");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const pageNumbers = document.getElementById("pageNumbers");
+      const pageInfo = document.getElementById("pageInfo");
+
+     
+      imageCount.textContent = `${images.length} Images`;
+
+      function createGallery() {
+        displayImagesForPage(currentPage);
+        createPagination();
+        updatePageInfo();
+      }
+
+   
+      function displayImagesForPage(page) {
+        galleryContainer.innerHTML = "";
+        const startIndex = (page - 1) * imagesPerPage;
+        const endIndex = startIndex + imagesPerPage;
+        const pageImages = images.slice(startIndex, endIndex);
+
+        pageImages.forEach((image, index) => {
+          const card = document.createElement("div");
+          card.className = "image-card hover-lift animate-on-scroll";
+          card.style.transitionDelay = `${index * 50}ms`;
+
+          const cleanedTitle = (() => {
+            if (typeof image.title === "string") {
+              const m1 = image.title.match(/^Image\s+(\d{1,3})$/i);
+              if (m1) return `Photo ${m1[1]}`;
+              const m2 = image.title.match(/^Scroll\s*Image\s*(\d{1,3})$/i);
+              if (m2) return `Highlight ${m2[1]}`;
+            }
+            return image.title && image.title.trim() !== "" ? image.title : "";
+          })();
+
+          const hasTitle = cleanedTitle && cleanedTitle.trim() !== "";
+
+          card.innerHTML = `
+                    <div class="image-container">
+                        <img src="${image.src}" alt="Gallery image" loading="lazy" draggable="false" oncontextmenu="return false" onclick="openModal('${image.src}')">
+                    </div>
+                `;
+
+          galleryContainer.appendChild(card);
+        });
+
+        setTimeout(() => {
+          const elementsToAnimate =
+            document.querySelectorAll(".animate-on-scroll");
+          elementsToAnimate.forEach((el) => {
+            el.classList.add("is-visible");
+          });
+        }, 100);
+      }
+
+ 
+      function createPagination() {
+        const totalPages = Math.ceil(images.length / imagesPerPage);
+        pageNumbers.innerHTML = "";
+
+     
+        if (totalPages > 0) {
+          addPageNumber(1, totalPages);
+        }
+
+      
+        if (totalPages > 7) {
+          if (currentPage > 4) {
+            addPageNumber("...", totalPages, true);
+          }
+
+          const startPage = Math.max(2, currentPage - 1);
+          const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+          for (let i = startPage; i <= endPage; i++) {
+            if (i > 1 && i < totalPages) {
+              addPageNumber(i, totalPages);
+            }
+          }
+
+          if (currentPage < totalPages - 3) {
+            addPageNumber("...", totalPages, true);
+          }
+        } else {
+     
+          for (let i = 2; i <= totalPages; i++) {
+            addPageNumber(i, totalPages);
+          }
+        }
+
+    
+        if (totalPages > 1 && totalPages !== 1) {
+  
+          const middlePages = [];
+          if (totalPages > 7) {
+            const startPage = Math.max(2, currentPage - 1);
+            const endPage = Math.min(totalPages - 1, currentPage + 1);
+            for (let i = startPage; i <= endPage; i++) {
+              if (i > 1 && i < totalPages) {
+                middlePages.push(i);
+              }
+            }
+          } else {
+            for (let i = 2; i <= totalPages; i++) {
+              middlePages.push(i);
+            }
+          }
+
+          if (!middlePages.includes(totalPages)) {
+            addPageNumber(totalPages, totalPages);
+          }
+        }
+
+        updatePaginationButtons();
+      }
+
+
+      function addPageNumber(pageNum, totalPages, isEllipsis = false) {
+        const pageBtn = document.createElement("button");
+
+        if (isEllipsis) {
+          pageBtn.className =
+            "px-3 py-2 text-sm font-medium text-gray-400 bg-white border border-gray-300 rounded-md cursor-default";
+          pageBtn.textContent = "...";
+          pageBtn.disabled = true;
+        } else {
+          pageBtn.className = `px-3 py-2 text-sm font-medium rounded-md border ${
+            pageNum === currentPage
+              ? "bg-[#144f6d] text-white border-[#144f6d]"
+              : "bg-white text-gray-500 border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+          }`;
+          pageBtn.textContent = pageNum;
+          pageBtn.onclick = () => goToPage(pageNum);
+        }
+
+        pageNumbers.appendChild(pageBtn);
+      }
+
+      function goToPage(page) {
+        if (page < 1 || page > Math.ceil(images.length / imagesPerPage)) return;
+
+        currentPage = page;
+        displayImagesForPage(currentPage);
+        createPagination();
+        updatePageInfo();
+        updatePaginationButtons();
+
+  
+        galleryContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+  
+      function updatePaginationButtons() {
+        const totalPages = Math.ceil(images.length / imagesPerPage);
+
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages;
+
+        prevBtn.onclick = () => goToPage(currentPage - 1);
+        nextBtn.onclick = () => goToPage(currentPage + 1);
+      }
+
+      function updatePageInfo() {
+        const startIndex = (currentPage - 1) * imagesPerPage + 1;
+        const endIndex = Math.min(currentPage * imagesPerPage, images.length);
+        pageInfo.textContent = `Showing ${startIndex}-${endIndex} of ${images.length} images`;
+      }
+
+      function openModal(imageSrc) {
+        modalImage.src = imageSrc;
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+   
+      closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+    
+      document.addEventListener("DOMContentLoaded", function () {
+        createGallery();
+      });
+    </script>
+  </body>
+</html>
