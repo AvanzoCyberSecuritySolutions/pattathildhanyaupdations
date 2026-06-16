@@ -1,213 +1,532 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Talks & Cyber Insights | Dr. Pattathil Dhanya Menon</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-[#FDFBF9] min-h-screen flex flex-col justify-between">
-    <!-- Back to Home Button -->
-    <div class="absolute top-8 left-4 sm:left-6 lg:left-8 z-20">
-      <a href="../index.html" class="flex items-center text-gray-700 hover:text-orange-500 transition-colors duration-300 group">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mr-2 transform group-hover:-translate-x-1 transition-transform duration-300">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-        </svg>
-        <span class="text-sm font-medium">Back to Home</span>
-      </a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talks & Cyber Insights | Dr. Pattathil Dhanya Menon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#FDFBF9] min-h-screen flex flex-col justify-between">
+  <!-- Back to Home Button -->
+  <div class="absolute top-8 left-4 sm:left-6 lg:left-8 z-20">
+    <a href="{% url 'index' %}"
+      class="flex items-center text-gray-700 hover:text-orange-500 transition-colors duration-300 group">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+        class="w-6 h-6 mr-2 transform group-hover:-translate-x-1 transition-transform duration-300">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+      <span class="text-sm font-medium">Back to Home</span>
+    </a>
+  </div>
+
+  <!-- Public Talks & Cyber Insights Section -->
+  <section class="py-24 relative overflow-hidden flex-grow">
+    <!-- Ambient background decorations -->
+    <div class="absolute top-0 left-10 w-72 h-72 bg-blue-50/60 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-10 w-72 h-72 bg-orange-50/60 rounded-full blur-3xl -z-10 pointer-events-none">
     </div>
 
-    <!-- Public Talks & Cyber Insights Section -->
-    <section class="py-24 relative overflow-hidden flex-grow">
-      <!-- Ambient background decorations -->
-      <div class="absolute top-0 left-10 w-72 h-72 bg-blue-50/60 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-      <div class="absolute bottom-0 right-10 w-72 h-72 bg-orange-50/60 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    <div class="container mx-auto px-6 max-w-6xl relative z-10">
+      <div class="text-center md:text-left mb-12 mt-6">
+        <p class="text-orange-500 font-semibold text-base uppercase tracking-wider">Public Engagement & Insights</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-black tracking-wide mt-2">
+          TALKS & CYBER INSIGHTS
+        </h1>
+        <div class="h-1 w-20 bg-orange-200 mt-4 rounded mx-auto md:mx-0"></div>
+        <p class="text-gray-600 mt-4 text-base md:text-lg max-w-2xl mx-auto md:mx-0">
+          Watch Dr. Pattathil Dhanya Menon share strategic knowledge on digital safety, cyber hygiene, and data defense
+          at major industry forums, expos, and expert monologues.
+        </p>
+      </div>
 
-      <div class="container mx-auto px-6 max-w-6xl relative z-10">
-        <div class="text-center md:text-left mb-12 mt-6">
-          <p class="text-orange-500 font-semibold text-base uppercase tracking-wider">Public Engagement & Insights</p>
-          <h1 class="text-4xl md:text-5xl font-extrabold text-black tracking-wide mt-2">
-            TALKS & CYBER INSIGHTS
-          </h1>
-          <div class="h-1 w-20 bg-orange-200 mt-4 rounded mx-auto md:mx-0"></div>
-          <p class="text-gray-600 mt-4 text-base md:text-lg max-w-2xl mx-auto md:mx-0">
-            Watch Dr. Pattathil Dhanya Menon share strategic knowledge on digital safety, cyber hygiene, and data defense at major industry forums, expos, and expert monologues.
-          </p>
+      <!-- Video Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1 (CSIE 2025) -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 w-fit mb-4">
+                Keynote Speech
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                Dr. Pattathil Dhanya Menon on Data Compromise &amp; Awareness | CSIE 2025
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                CyberSec India Expo
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                A critical talk addressing modern database protection, digital vulnerability assessment, and strategic
+                security models for enterprise infrastructure.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/vAsX8OCts5w?si=ZX5xpMCnwhiRlyMZ" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
         </div>
 
-        <!-- Video Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Card 1 (CSIE 2025) -->
-          <div class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
-            <div class="p-6 flex-grow flex flex-col justify-between">
-              <div>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 w-fit mb-4">
-                  Keynote Speech
-                </span>
-                <h3 class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
-                  Data Compromise & Awareness
-                </h3>
-                <p class="text-sm font-medium text-orange-400 mt-1">
-                  CyberSec India Expo (CSIE) 2025
-                </p>
-                <p class="text-gray-600 text-sm mt-4 leading-relaxed">
-                  A critical talk addressing modern database protection, digital vulnerability assessment, and strategic security models for enterprise infrastructure.
-                </p>
-              </div>
-              <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
-                <a href="https://youtu.be/vAsX8OCts5w?si=ZX5xpMCnwhiRlyMZ" target="_blank" class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
-                  <span>Watch on YouTube</span>
-                  <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-                <span class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-orange-50 group-hover:text-orange-500 transition-all duration-300">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </span>
-              </div>
+        <!-- Card 2 (Technoviti 2024) -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 w-fit mb-4">
+                Fireside Chat
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-emerald-600 transition-colors duration-300">
+                It’s Myths &amp; Misconceptions Dr Pattathil Dhanya Menon
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                bankingfrontierslive
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                Exploring how robust digital safety constructs and proactive threat models can serve as strategic
+                business differentiators for modern enterprises.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/uGsKJpBm3bs?si=co5N7GTH4s3zMe8f" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
             </div>
           </div>
+        </div>
 
-          <!-- Card 2 (Technoviti 2024) -->
-          <div class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
-            <div class="p-6 flex-grow flex flex-col justify-between">
-              <div>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 w-fit mb-4">
-                  Fireside Chat
-                </span>
-                <h3 class="text-xl font-bold text-gray-800 group-hover:text-emerald-600 transition-colors duration-300">
-                  Cybersecurity as a Competitive Advantage
-                </h3>
-                <p class="text-sm font-medium text-orange-400 mt-1">
-                  Technoviti & Finnoviti 2024
-                </p>
-                <p class="text-gray-600 text-sm mt-4 leading-relaxed">
-                  Exploring how robust digital safety constructs and proactive threat models can serve as strategic business differentiators for modern enterprises.
-                </p>
-              </div>
-              <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
-                <a href="https://youtu.be/uGsKJpBm3bs?si=co5N7GTH4s3zMe8f" target="_blank" class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
-                  <span>Watch on YouTube</span>
-                  <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-                <span class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-orange-50 group-hover:text-orange-500 transition-all duration-300">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </span>
-              </div>
+        <!-- Card 3 (Digital Safety) -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-600 w-fit mb-4">
+                Monologue
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">
+                Digital Safety - Monologue Dr Pattathil Dhanya Menon
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                361DM Learning and Education
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                An insightful masterclass on minimizing personal digital footprints, recognizing social engineering, and
+                building daily cyber hygiene habits.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/NSASTM2JviA?si=BLLeMdxXpCtHO8Pk" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
             </div>
           </div>
+        </div>
 
-          <!-- Card 3 (Digital Safety) -->
-          <div class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
-            <div class="p-6 flex-grow flex flex-col justify-between">
-              <div>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-600 w-fit mb-4">
-                  Monologue
-                </span>
-                <h3 class="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">
-                  Digital Safety & Awareness
-                </h3>
-                <p class="text-sm font-medium text-orange-400 mt-1">
-                  Public Safety Series
-                </p>
-                <p class="text-gray-600 text-sm mt-4 leading-relaxed">
-                  An insightful masterclass on minimizing personal digital footprints, recognizing social engineering, and building daily cyber hygiene habits.
-                </p>
-              </div>
-              <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
-                <a href="https://youtu.be/NSASTM2JviA?si=BLLeMdxXpCtHO8Pk" target="_blank" class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
-                  <span>Watch on YouTube</span>
-                  <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-                <span class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-orange-50 group-hover:text-orange-500 transition-all duration-300">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </span>
-              </div>
+        <!-- Card 4 (Cyber Security Insights) -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600 w-fit mb-4">
+                Interview
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-amber-600 transition-colors duration-300">
+                INTERACTION WITH DR. PATTATHIL DHANYA MENON ON SAFER INTERNET DAY FOR GIRLS
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                DEPT OF COMPUTER SCIENCE- KCW, CIVIL LINES LUDHIANA
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                A comprehensive discussion focusing on the evolving techniques of cyber criminals, phishing identifiers,
+                and baseline security measures.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/6TirrW6kJ5Q?si=FryVK_vSTVL9q3Dp" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
             </div>
           </div>
+        </div>
 
-          <!-- Card 4 (Cyber Security Insights) -->
-          <div class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
-            <div class="p-6 flex-grow flex flex-col justify-between">
-              <div>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600 w-fit mb-4">
-                  Interview
-                </span>
-                <h3 class="text-xl font-bold text-gray-800 group-hover:text-amber-600 transition-colors duration-300">
-                  Cybersecurity & Threat Landscapes
-                </h3>
-                <p class="text-sm font-medium text-orange-400 mt-1">
-                  Expert Dialogue
-                </p>
-                <p class="text-gray-600 text-sm mt-4 leading-relaxed">
-                  A comprehensive discussion focusing on the evolving techniques of cyber criminals, phishing identifiers, and baseline security measures.
-                </p>
-              </div>
-              <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
-                <a href="https://youtu.be/6TirrW6kJ5Q?si=FryVK_vSTVL9q3Dp" target="_blank" class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
-                  <span>Watch on YouTube</span>
-                  <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-                <span class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-orange-50 group-hover:text-orange-500 transition-all duration-300">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </span>
-              </div>
+        <!-- Card 5 (YouTube Shorts) -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 w-fit mb-4">
+                Quick Video
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-rose-600 transition-colors duration-300">
+                India’s first female Cyber Crime Investigator - Dhanya Menon on ‘The A-Game Podcast with Muskan’
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                Muskan Sethi
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                Bite-sized, high-impact cyber safety tips targeting passwords, secure links, and quick protective
+                actions for web and mobile users.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtube.com/shorts/Vg0KZJFaikc?si=iUwGxkseJJBTFteS" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
             </div>
           </div>
+        </div>
 
-          <!-- Card 5 (YouTube Shorts) -->
-          <div class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
-            <div class="p-6 flex-grow flex flex-col justify-between">
-              <div>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 w-fit mb-4">
-                  Quick Video
-                </span>
-                <h3 class="text-xl font-bold text-gray-800 group-hover:text-rose-600 transition-colors duration-300">
-                  Cyber Crime Prevention Tips
-                </h3>
-                <p class="text-sm font-medium text-orange-400 mt-1">
-                  Bite-sized Insights
-                </p>
-                <p class="text-gray-600 text-sm mt-4 leading-relaxed">
-                  Bite-sized, high-impact cyber safety tips targeting passwords, secure links, and quick protective actions for web and mobile users.
-                </p>
-              </div>
-              <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
-                <a href="https://youtube.com/shorts/Vg0KZJFaikc?si=iUwGxkseJJBTFteS" target="_blank" class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
-                  <span>Watch on YouTube</span>
-                  <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-                <span class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-orange-50 group-hover:text-orange-500 transition-all duration-300">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </span>
-              </div>
+        <!-- Card 6 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 w-fit mb-4">
+                Talk
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                Forward Messages എപ്പോഴും Safe അല്ല... | Pattathil Dhanya Menon | RJ Nitha | Red FM Malayalam
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                Red FM Malayalam
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                A critical discussion on the dangers of forwarding unverified messages, exploring practical strategies
+                for digital hygiene and misinformation prevention.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/Q8-g-38DUhI?si=DoQaAHzmTtWfCkTu" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 w-fit mb-4">
+                Insight
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-emerald-600 transition-colors duration-300">
+                സൈബർ ഇടങ്ങളിലെ സ്ത്രീ സുരക്ഷ. Exclusive talk by Dr. Pattathil Dhanya Menon
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                Oxygen The Digital Expert
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                An exclusive talk focusing on women's safety in the cyber world, addressing online harassment, digital
+                footprints, and proactive defense mechanisms.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/iNx1ZPCkeWs?si=f58MQHD9kt5t0bIo" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-600 w-fit mb-4">
+                Interview
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">
+                Social Engineering Tactics | Pattathil Dhanya Menon
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                YouTube
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                A deep dive into the psychology behind social engineering, detailing how threat actors manipulate
+                individuals to gain unauthorized access to sensitive data.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/Gi-HAhaF7CI?si=uf9Oyc63jDeQvP-g" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600 w-fit mb-4">
+                Talk
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-amber-600 transition-colors duration-300">
+                Bold &amp; Beautiful | Pattathil Dhanya
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                DD Malayalam
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                An engaging conversation covering personal empowerment, online resilience, and building a secure and
+                confident digital presence.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/NtiLo1_IeHg?si=4ZOdf8AB5ePHKSvl" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-600 w-fit mb-4">
+                Insight
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-rose-600 transition-colors duration-300">
+                കുട്ടിക്ക് gadget കൊടുക്കുന്നത് കളിയല്ല… വലിയ അപകടം! Dhanya Menon | Cyber Crime Investigator
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                Wow Culture
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                A vital warning about the risks of early gadget exposure for children, highlighting parental controls,
+                cyber grooming threats, and safe digital parenting.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/nY3yj3kjbIk?si=hQNWzSHN65weTjCo" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 w-fit mb-4">
+                Talk
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                പഴയ phone ആക്രിക്ക് കൊടുക്കാൻ പോലും പേടിക്കണം! Cybersecurity | Dr. Pattathil Dhanya | Interview
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                VANITHA
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                An eye-opening interview explaining the hidden data risks of discarding old mobile phones and the
+                essential steps for secure data wiping before disposal.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/87CE5ORp5kc?si=BYoQb_7-ZYts2_fM" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 w-fit mb-4">
+                Insight
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-emerald-600 transition-colors duration-300">
+                Dhanya Menon Cyber crime Expert / Dancer
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                SoulPost
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                A unique profile interview exploring the dual life of a cyber crime investigator and dancer, delving
+                into professional challenges and creative outlets.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/dLu5k_xeZG8?si=DBm0dZA7s07eRrIz" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 13 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-600 w-fit mb-4">
+                Interview
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors duration-300">
+                "തകർച്ചകൾ പുതിയൊരു തുടക്കമാവട്ടെ" Pattathil Dhanya Menon Cyber Crime Investigator/ Dancer/
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                SoulPost
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                An inspiring talk on overcoming personal and professional setbacks, turning challenges into new
+                beginnings within the fast-paced world of cyber investigation.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/Kmvd1rKnFIo?si=J4MPlwyw_c2niNLz" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 14 -->
+        <div
+          class="flex flex-col bg-white rounded-2xl border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600 w-fit mb-4">
+                Talk
+              </span>
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-amber-600 transition-colors duration-300">
+                സാമൂഹ്യ മാധ്യമങ്ങളിൽ സ്ത്രീകൾ സുരക്ഷിതരോ? |Dhanya Menon Pattathil | Crime Investigator | Janamonline
+              </h3>
+              <p class="text-sm font-medium text-orange-400 mt-1">
+                Janam Online
+              </p>
+              <p class="text-gray-600 text-sm mt-4 leading-relaxed">
+                A comprehensive analysis of social media safety for women, unpacking common cyber threats, privacy
+                settings, and steps to ensure a secure online experience.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+              <a href="https://youtu.be/g8Z0PU6T-DY?si=HzhECG0b49XTPkjU" target="_blank"
+                class="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-orange-500 transition-colors duration-200 group/link">
+                <span>Watch on YouTube</span>
+                <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform duration-200"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="w-full bg-gray-800 text-gray-400 text-sm py-6 text-center">
-      A unit of Avanzo Cyber Security Solutions | Avanzo Designs
-    </footer>
-  </body>
+  <!-- Footer -->
+  <footer class="w-full bg-gray-800 text-gray-400 text-sm py-6 text-center">
+    A unit of Avanzo Cyber Security Solutions | Avanzo Designs
+  </footer>
+</body>
+
 </html>
